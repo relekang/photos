@@ -1,0 +1,9 @@
+django>=1.7,<1.8
+requests
+pyyaml
+redis
+
+python-social-auth
+django-pipeline
+django-extensions
+django-basis

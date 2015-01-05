@@ -4,6 +4,7 @@ from PIL.ExifTags import TAGS
 from django.core.cache import cache
 from django.db import models
 from django.utils.functional import cached_property
+from django.utils.safestring import mark_safe
 from django.utils.text import slugify
 from sorl.thumbnail import get_thumbnail
 
@@ -29,6 +30,13 @@ class Photo(models.Model):
     @property
     def square_thumbnail(self):
         return get_thumbnail(self.file, '1000x1000', crop='center')
+
+    @property
+    def admin_thumbnail(self):
+        return mark_safe('<img src="{}" alt="{}" />'.format(
+            get_thumbnail(self.file, '150').url,
+            self.title
+        ))
 
     @property
     def camera(self):

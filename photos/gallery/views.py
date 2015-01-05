@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import logging
+from django.shortcuts import get_object_or_404
 
-from django.core.exceptions import MultipleObjectsReturned
 from django.views.generic.detail import DetailView
 
 from .models import Photo
@@ -18,9 +18,4 @@ class PhotoDetailView(DetailView):
 
         if slug is None:
             return queryset.last()
-
-        try:
-            return queryset.get(slug=slug)
-        except MultipleObjectsReturned:
-            logger.warning('get_object returned multiple objects for slug %s' % slug)
-            return queryset.filter(slug=slug).last()
+        return get_object_or_404(queryset, slug=slug)

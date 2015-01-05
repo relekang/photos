@@ -4,16 +4,23 @@ from PIL.ExifTags import TAGS
 from django.core.cache import cache
 from django.db import models
 from django.utils.functional import cached_property
+from django.utils.text import slugify
 from sorl.thumbnail import get_thumbnail
 
 
 class Photo(models.Model):
     file = models.ImageField(upload_to='photos')
     title = models.CharField(max_length=150)
+    slug = models.CharField(max_length=160, unique=True, db_index=True, blank=True)
     taken_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return self.file.name
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
     @property
     def large_thumbnail(self):

@@ -1,10 +1,7 @@
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
-
 ALLOWED_HOSTS = []
 SECRET_KEY = 'l(#z*1@s^=&50%#1grsp&67xrlyu!=#r(3y1a^w55jdv5zz(+^'
 
@@ -39,7 +36,7 @@ WSGI_APPLICATION = 'photos.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, '../../db.sqlite3'),
     }
 }
 
@@ -53,9 +50,9 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_ROOT = os.path.join(BASE_DIR, '../../uploads')
 MEDIA_URL = '/uploads/'
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'photos/files/'),
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'photos/../files/'),
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 STATICFILES_FINDERS = (

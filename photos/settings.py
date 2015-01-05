@@ -76,4 +76,3 @@ PIPELINE_CSS = {
         'output_filename': 'css/main.css',
     },
 }
-

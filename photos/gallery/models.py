@@ -66,7 +66,6 @@ class Photo(models.Model):
     def exif(self):
         key = 'photoexif{}'.format(self.pk)
         data = cache.get(key)
-        data = None
         if data is None:
             with Image.open(self.file) as image:
                 exif = image._getexif()

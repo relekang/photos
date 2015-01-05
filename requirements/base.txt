@@ -7,3 +7,6 @@ python-social-auth
 django-pipeline
 django-extensions
 django-basis
+
+sorl-thumbnail
+pillow

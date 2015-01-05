@@ -15,6 +15,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'pipeline',
+    'django_extensions',
+    'sorl.thumbnail',
+
+    'photos.gallery',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -45,16 +51,23 @@ USE_L10N = True
 USE_TZ = True
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, '../static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '../uploads')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/uploads/'
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'files/'),
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'photos/files/'),
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+)
 
 PIPELINE_COMPILERS = (
     'pipeline.compilers.sass.SASSCompiler',
 )
+
 PIPELINE_CSS = {
     'main': {
         'source_filenames': (

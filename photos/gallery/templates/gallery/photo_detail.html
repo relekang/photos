@@ -1,20 +1,35 @@
 {% load pipeline %}
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Photos by Rolf Erik Lekang</title>
-    <link href="http://fonts.googleapis.com/css?family=Raleway:600,400,100" rel="stylesheet" />
-    {% stylesheet 'main' %}
-  </head>
-  <body>
-  <div class="wrapper">
-    <div class="image" style="background-image: url({{ object.large_thumbnail.url }})"></div>
-    <div class="meta">
-      <div class="info">
-        <h1>{{ object.title }}</h1>
-        {{ object.camera }} - {{ object.focal_length }}mm {{ object.exposure_time }}s f/{{ object.aperture }}
-      </div>
+<head>
+  <title>Photos by Rolf Erik Lekang</title>
+  <link href="http://fonts.googleapis.com/css?family=Raleway:600,400,100" rel="stylesheet"/>
+  {% stylesheet 'main' %}
+</head>
+<body>
+<div class="wrapper">
+  <div class="image" style="background-image: url({{ object.large_thumbnail.url }})"></div>
+  <div class="meta">
+    <div class="info">
+      <h1>{{ object.title }}</h1>
+      {{ object.camera }} - {{ object.focal_length }}mm {{ object.exposure_time }}s
+      f/{{ object.aperture }}
     </div>
   </div>
-  </body>
+</div>
+<script>
+  setTimeout(function fadeOut() {
+    var el = document.querySelector('.meta');
+    el.style.opacity = 1;
+
+    (function fade() {
+      if ((el.style.opacity -= .1) < 0) {
+        el.style.display = "none";
+      } else {
+        setTimeout(function() {requestAnimationFrame(fade); }, 50);
+      }
+    })();
+  }, 1500);
+</script>
+</body>
 </html>

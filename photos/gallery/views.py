@@ -3,6 +3,7 @@ import logging
 from django.shortcuts import get_object_or_404
 
 from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 
 from .models import Photo
 
@@ -19,3 +20,7 @@ class PhotoDetailView(DetailView):
         if slug is None:
             return queryset.last()
         return get_object_or_404(queryset, slug=slug)
+
+
+class ArchiveView(ListView):
+    model = Photo

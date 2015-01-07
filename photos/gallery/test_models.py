@@ -35,10 +35,14 @@ class PhotoTestCase(TestCase):
         self.assertEqual(thumb.x, 3000)
 
     def test_square_thumbnail(self):
-        thumb = self.object.square_thumbnail
+        thumb = self.object.square_thumbnail()
         self.assertIsNotNone(thumb.url)
         self.assertEqual(thumb.x, 1000)
         self.assertEqual(thumb.y, 1000)
+        thumb = self.object.square_thumbnail('10x10')
+        self.assertIsNotNone(thumb.url)
+        self.assertEqual(thumb.x, 10)
+        self.assertEqual(thumb.y, 10)
 
     def test_admin_thumbnail(self):
         thumb = self.object.admin_thumbnail

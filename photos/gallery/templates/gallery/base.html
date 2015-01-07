@@ -1,0 +1,16 @@
+{% load pipeline %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Photos by Rolf Erik Lekang</title>
+  <link href="http://fonts.googleapis.com/css?family=Raleway:600,400,100" rel="stylesheet"/>
+  {% stylesheet 'main' %}
+  {% block css %}{% endblock %}
+</head>
+<body>
+<div class="wrapper">
+  {% block content %}{% endblock %}
+</div>
+{% block js %}{% endblock %}
+</body>
+</html>

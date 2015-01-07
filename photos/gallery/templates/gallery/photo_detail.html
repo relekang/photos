@@ -1,13 +1,5 @@
-{% load pipeline %}
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Photos by Rolf Erik Lekang</title>
-  <link href="http://fonts.googleapis.com/css?family=Raleway:600,400,100" rel="stylesheet"/>
-  {% stylesheet 'main' %}
-</head>
-<body>
-<div class="wrapper">
+{% extends 'gallery/base.html' %}
+{% block content %}
   <div class="image" style="background-image: url({{ object.large_thumbnail.url }})"></div>
   <div class="meta">
     <div class="info">
@@ -16,20 +8,24 @@
       f/{{ object.aperture }}
     </div>
   </div>
-</div>
-<script>
-  setTimeout(function fadeOut() {
-    var el = document.querySelector('.meta');
-    el.style.opacity = 1;
+{% endblock %}
 
-    (function fade() {
-      if ((el.style.opacity -= .1) < 0) {
-        el.style.display = "none";
-      } else {
-        setTimeout(function() {requestAnimationFrame(fade); }, 50);
-      }
-    })();
-  }, 1500);
-</script>
-</body>
-</html>
+{% block js %}
+  <script>
+    setTimeout(function fadeOut() {
+      var el = document.querySelector('.meta');
+      el.style.opacity = 1;
+
+      (function fade() {
+        if ((el.style.opacity -= .1) < 0) {
+          el.style.display = "none";
+        } else {
+          setTimeout(function () {
+            requestAnimationFrame(fade);
+          }, 50);
+        }
+      })();
+    }, 1500);
+  </script>
+{% endblock %}
+

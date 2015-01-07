@@ -35,3 +35,53 @@ h1, h2, h3, h4
         font-size: 6em
         margin-bottom: 0
 
+.archive
+  list-style-type: none
+  margin: 0 auto
+  padding: 0
+  width: 500px
+  text-align: center
+
+  li
+    display: inline-block
+    margin: 0
+    padding: 0
+    text-align: left
+
+    &>a
+      width: 500px
+      height: 500px
+      margin: 0
+      padding: 0
+      display: block
+      position: relative
+      color: #000000
+
+    .title
+      width: 100%
+      padding-top: .4em
+      position: absolute
+      bottom: 1em
+      font-size: 2em
+      line-height: 2em
+      background: rgba(255, 255, 255, 0.6)
+
+@media screen and (min-width: 1000px)
+  .archive
+    width: 1000px
+
+@media screen and (min-width: 1500px)
+  .archive
+    width: 1500px
+
+@media screen and (min-width: 2000px)
+  .archive
+    width: 2000px
+
+@media screen and (min-width: 2500px)
+  .archive
+    width: 2500px
+
+@media screen and (min-width: 3000px)
+  .archive
+    width: 3000px

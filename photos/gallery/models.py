@@ -28,8 +28,11 @@ class Photo(models.Model):
         return get_thumbnail(self.file, '3000')
 
     @property
-    def square_thumbnail(self):
-        return get_thumbnail(self.file, '1000x1000', crop='center')
+    def archive_thumbnail(self):
+        return self.square_thumbnail('500x500')
+
+    def square_thumbnail(self, size='1000x1000'):
+        return get_thumbnail(self.file, size, crop='center')
 
     @property
     def admin_thumbnail(self):

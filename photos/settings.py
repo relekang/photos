@@ -37,6 +37,7 @@ INSTALLED_APPS = [
 
     'social.apps.django_app.default',
     'rest_framework',
+    'thumbnails',
 
     'django.contrib.admin',
     'django.contrib.auth',

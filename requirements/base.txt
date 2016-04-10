@@ -11,5 +11,5 @@ django-pipeline
 django-extensions
 django-basis
 
-sorl-thumbnail
+python-thumbnails
 pillow

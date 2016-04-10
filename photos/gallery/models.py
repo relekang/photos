@@ -6,7 +6,7 @@ from django.db import models
 from django.utils.functional import cached_property
 from django.utils.safestring import mark_safe
 from django.utils.text import slugify
-from sorl.thumbnail import get_thumbnail
+from thumbnails import get_thumbnail
 
 
 def photo_upload_to(instance, filename):
@@ -33,19 +33,19 @@ class Photo(models.Model):
 
     @property
     def large_thumbnail(self):
-        return get_thumbnail(self.file, '3000')
+        return get_thumbnail(self.file.path, '3000')
 
     @property
     def archive_thumbnail(self):
         return self.square_thumbnail('500x500')
 
     def square_thumbnail(self, size='1000x1000'):
-        return get_thumbnail(self.file, size, crop='center')
+        return get_thumbnail(self.file.path, size, crop='center')
 
     @property
     def admin_thumbnail(self):
         return mark_safe('<img src="{}" alt="{}" />'.format(
-            get_thumbnail(self.file, '150').url,
+            get_thumbnail(self.file.path, '150').url,
             self.title
         ))
 

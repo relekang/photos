@@ -9,9 +9,13 @@ from django.utils.text import slugify
 from sorl.thumbnail import get_thumbnail
 
 
+def photo_upload_to(instance, filename):
+    return 'photos/user_{0}/{1}'.format(instance.user.id, filename)
+
+
 class Photo(models.Model):
     user = models.ForeignKey('users.User', related_name='photos')
-    file = models.ImageField(upload_to='photos')
+    file = models.ImageField(upload_to=photo_upload_to)
     title = models.CharField(max_length=150)
     slug = models.CharField(max_length=160, db_index=True, blank=True)
     taken_at = models.DateTimeField(null=True, blank=True)

@@ -10,7 +10,7 @@ from sorl.thumbnail import get_thumbnail
 
 
 class Photo(models.Model):
-    user = models.ForeignKey('users.User')
+    user = models.ForeignKey('users.User', related_name='photos')
     file = models.ImageField(upload_to='photos')
     title = models.CharField(max_length=150)
     slug = models.CharField(max_length=160, db_index=True, blank=True)

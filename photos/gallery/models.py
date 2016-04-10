@@ -51,27 +51,27 @@ class Photo(models.Model):
 
     @property
     def camera(self):
-        return self.exif['Model']
+        return self.exif.get('Model')
 
     @property
     def lens(self):
-        return self.exif['LensModel']
+        return self.exif.get('LensModel')
 
     @property
     def exposure_time(self):
-        return '{}/{}'.format(self.exif['ExposureTime'][0], self.exif['ExposureTime'][1])
+        return '{}/{}'.format(self.exif.get('ExposureTime')[0], self.exif.get('ExposureTime')[1])
 
     @property
     def aperture(self):
-        return self.exif['FNumber'][0] / self.exif['FNumber'][1]
+        return self.exif.get('FNumber')[0] / self.exif.get('FNumber')[1]
 
     @property
     def focal_length(self):
-        return int(self.exif['FocalLength'][0] / self.exif['FocalLength'][1])
+        return int(self.exif.get('FocalLength')[0] / self.exif.get('FocalLength')[1])
 
     @property
     def iso(self):
-        return self.exif['ISOSpeedRatings']
+        return self.exif.get('ISOSpeedRatings')
 
     @cached_property
     def exif(self):

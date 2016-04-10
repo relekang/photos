@@ -17,11 +17,25 @@ secrets = load_secrets()
 DEBUG = secrets.get('debug', True)
 ALLOWED_HOSTS = secrets.get('allowed_hosts', [])
 SECRET_KEY = secrets.get('secret_key', 'a secret')
-# AUTH_USER_MODEL = 'users.User'
+
+AUTH_USER_MODEL = 'users.User'
+LOGIN_REDIRECT_URL = '/admin/'
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+SOCIAL_AUTH_TWITTER_KEY = secrets.get('social_auth_twitter_key', '')
+SOCIAL_AUTH_TWITTER_SECRET = secrets.get('social_auth_twitter_secret', '')
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.twitter.TwitterOAuth',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 
 INSTALLED_APPS = [
     'photos.gallery',
+    'photos.users',
+
+    'social.apps.django_app.default',
 
     'django.contrib.admin',
     'django.contrib.auth',

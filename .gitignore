@@ -55,3 +55,4 @@ target/
 
 db.sqlite3
 uploads
+secrets.json

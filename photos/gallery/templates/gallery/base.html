@@ -1,16 +1,16 @@
-{% load pipeline %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
 <head>
   <title>Photos by Rolf Erik Lekang</title>
   <link href="http://fonts.googleapis.com/css?family=Raleway:600,400,100" rel="stylesheet"/>
-  {% stylesheet 'main' %}
+  <link href="{% static 'main.css' %}" rel="stylesheet" />
   {% block css %}{% endblock %}
 </head>
 <body>
-<div class="wrapper">
-  {% block content %}{% endblock %}
-</div>
+  <div class="wrapper">
+    {% block content %}{% endblock %}
+  </div>
 {% block js %}{% endblock %}
 </body>
 </html>

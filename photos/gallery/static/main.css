@@ -1,0 +1,104 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Raleway, sans-serif;
+  font-weight: 100;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 100;
+}
+.wrapper {
+  height: 100%;
+  position: relative;
+}
+.wrapper .image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+}
+.wrapper .meta {
+  width: 100%;
+  padding: 1em 0;
+  position: absolute;
+  left: 0;
+  bottom: 20%;
+  background: rgba(255,255,255,0.6);
+}
+.wrapper .meta .info {
+  width: 80%;
+  margin: 0 auto;
+}
+.wrapper .meta .info h1 {
+  font-size: 6em;
+  margin-bottom: 0;
+}
+.wrapper .meta.hidden {
+  bottom: -20em;
+  opacity: 0;
+  -webkit-transition: all 2s ease-in;
+  -moz-transition: all 2s ease-in;
+  -o-transition: all 2s ease-in;
+  transition: all 2s ease-in;
+}
+.archive {
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+  width: 500px;
+  text-align: center;
+}
+.archive li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+.archive li>a {
+  width: 500px;
+  height: 500px;
+  margin: 0;
+  padding: 0;
+  display: block;
+  position: relative;
+  color: #000;
+}
+.archive li .title {
+  width: 100%;
+  padding-top: 0.4em;
+  position: absolute;
+  bottom: 1em;
+  font-size: 2em;
+  line-height: 2em;
+  background: rgba(255,255,255,0.6);
+}
+@media screen and (min-width: 1000px) {
+  .archive {
+    width: 1000px;
+  }
+}
+@media screen and (min-width: 1500px) {
+  .archive {
+    width: 1500px;
+  }
+}
+@media screen and (min-width: 2000px) {
+  .archive {
+    width: 2000px;
+  }
+}
+@media screen and (min-width: 2500px) {
+  .archive {
+    width: 2500px;
+  }
+}
+@media screen and (min-width: 3000px) {
+  .archive {
+    width: 3000px;
+  }
+}

@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'photos.users',
 
     'social.apps.django_app.default',
+    'rest_framework',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,6 +56,19 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'djangorestframework_camel_case.render.CamelCaseJSONRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'djangorestframework_camel_case.parser.CamelCaseJSONParser',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ),
+    'PAGE_SIZE': 100,
+}
 
 ROOT_URLCONF = 'photos.urls'
 

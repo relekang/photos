@@ -16,11 +16,14 @@ logger = logging.getLogger(__name__)
 class PhotoViewMixin(object):
     model = Photo
 
+    def custom_domain(self):
+        host = self.request.get_host()
+        return host != 'photos.mocco.no' and host != '127.0.0.1:8000'
+
     def dispatch(self, *args, **kwargs):
         username = self.kwargs.get('username', None)
-        host = self.request.get_host()
 
-        if username and host != 'photos.mocco.no' and host != '127.0.0.1:8000':
+        if username and self.custom_domain():
             raise Http404()
 
         if username:
@@ -36,21 +39,19 @@ class PhotoViewMixin(object):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         username = self.kwargs.get('username', None)
-        host = self.request.get_host()
 
-        if host != 'photos.mocco.no' and host != '127.0.0.1:8000':
-            context['photographer'] = User.objects.get(domain=host)
+        if self.custom_domain():
+            context['photographer'] = User.objects.get(domain=self.request.get_host())
         elif username:
             context['photographer'] = User.objects.get(username=username)
         return context
 
     def get_queryset(self):
         queryset = self.model.objects.all()
-        host = self.request.get_host()
         username = self.kwargs.get('username', None)
 
-        if host != 'photos.mocco.no' and host != '127.0.0.1:8000':
-            queryset = queryset.filter(user__domain=host)
+        if self.custom_domain():
+            queryset = queryset.filter(user__domain=self.request.get_host())
         elif username is not None:
             queryset = queryset.filter(user__username=username)
 

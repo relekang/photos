@@ -6,6 +6,11 @@ from rest_framework.reverse import reverse
 class User(AbstractUser):
     domain = models.CharField(max_length=200, blank=True, db_index=True)
 
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.is_staff = True
+        super().save(*args, **kwargs)
+
     @property
     def last_photo(self):
         return self.photos.last()

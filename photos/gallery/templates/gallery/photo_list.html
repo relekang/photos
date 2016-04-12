@@ -1,10 +1,13 @@
 {% extends 'gallery/base.html' %}
 {% block content %}
+  <h1 class="text-center">Photos by {{ photographer.get_full_name }}</h1>
   <ul class="archive">
-    {% for photo in object_list %}<li>
+    {% for photo in object_list %}
+      <li>
         <a href="{% url 'gallery:photo_detail' photo.slug %}" style="background-image: url({{ photo.archive_thumbnail.url }});">
           <span class="title">&nbsp;&nbsp;{{ photo.title }}</span>
         </a>
-      </li>{% endfor %}
+      </li>
+    {% endfor %}
   </ul>
 {% endblock %}

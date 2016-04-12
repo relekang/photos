@@ -20,8 +20,8 @@ class PhotoViewMixin(object):
         username = self.kwargs.get('username', None)
         host = self.request.get_host()
 
-        if host != 'photos.mocco.no' and host != '127.0.0.1:8000':
-            raise Http404()
+        # if host != 'photos.mocco.no' and host != '127.0.0.1:8000':
+        #     raise Http404()
 
         if username:
             user = User.objects.get(username=username)

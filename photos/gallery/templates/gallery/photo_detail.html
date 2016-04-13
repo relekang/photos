@@ -4,7 +4,7 @@
   <meta name="twitter:card" content="photo" />
   <meta name="twitter:site" content="@moccoas" />
   <meta name="twitter:title" content="{{ object.title }}" />
-  <meta name="twitter:image" content="{{ object.medium_thumbnail.url }}" />
+  <meta name="twitter:image" content="http://{{ request.get_host }}{{ object.medium_thumbnail.url }}" />
   <meta name="twitter:url" content="{{ object.get_absolute_url }}" />
 {% endblock %}
 

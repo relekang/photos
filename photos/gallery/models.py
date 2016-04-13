@@ -32,7 +32,7 @@ class Photo(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return "{0}archive/{1}".format(self.user.get_absolute_url(), self.slug)
+        return "{0}/archive/{1}".format(self.user.get_absolute_url(), self.slug)
 
     @property
     def large_thumbnail(self):

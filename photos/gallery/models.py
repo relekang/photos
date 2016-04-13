@@ -31,6 +31,9 @@ class Photo(models.Model):
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return "{0}archive/{1}".format(self.user.get_absolute_url(), self.slug)
+
     @property
     def large_thumbnail(self):
         return get_thumbnail(self.file.path, '3000')

@@ -6,6 +6,8 @@
   <link href="http://fonts.googleapis.com/css?family=Raleway:600,400,100" rel="stylesheet"/>
   <link href="{% static 'main.css' %}" rel="stylesheet" />
   {% block css %}{% endblock %}
+
+  {% block extra_meta %}{% endblock %}
 </head>
 <body>
   <div class="wrapper {% if object %}photo-details{% endif %}">

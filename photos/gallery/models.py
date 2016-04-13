@@ -36,6 +36,10 @@ class Photo(models.Model):
         return get_thumbnail(self.file.path, '3000')
 
     @property
+    def medium_thumbnail(self):
+        return get_thumbnail(self.file.path, '1000')
+
+    @property
     def archive_thumbnail(self):
         return self.square_thumbnail('500x500')
 

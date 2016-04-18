@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from photos.gallery.views import PhotoDetailView
+
 from .users.models import User
 
 

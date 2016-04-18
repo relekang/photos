@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls import url
 
-from .views import PhotoDetailView, ArchiveView
+from .views import ArchiveView, PhotoDetailView
 
 urlpatterns = [
     url(r'^$', ArchiveView.as_view(), name='archive'),

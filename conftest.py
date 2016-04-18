@@ -1,8 +1,5 @@
 import pytest
 
-from photos.gallery.models import Photo
-from photos.users.models import User
-
 
 @pytest.fixture
 def user_pw():
@@ -11,6 +8,7 @@ def user_pw():
 
 @pytest.fixture
 def user(user_pw):
+    from photos.users.models import User
     return User.objects.create_user(
         username="ron",
         email="dumbledore@example.com",
@@ -20,6 +18,7 @@ def user(user_pw):
 
 @pytest.fixture
 def superuser(user_pw):
+    from photos.users.models import User
     return User.objects.create_superuser(
         username="dumbledore",
         email="dumbledore@example.com",
@@ -28,10 +27,11 @@ def superuser(user_pw):
 
 
 @pytest.fixture
-def create_photo(user):
+def create_photo():
+    from photos.gallery.models import Photo
+
     def inner_create_photo(**kwargs):
         kwargs.update(dict(
-            user=user,
             file="photos/test.jpg",
             slug="snowing",
             taken_at=None,
@@ -40,3 +40,8 @@ def create_photo(user):
         return Photo.objects.create(**kwargs)
 
     return inner_create_photo
+
+
+@pytest.fixture
+def photo(create_photo, user):
+    return create_photo(user=user)

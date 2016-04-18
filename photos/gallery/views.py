@@ -3,11 +3,11 @@ import logging
 
 from django.http.response import Http404
 from django.shortcuts import get_object_or_404, redirect
-
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
 from photos.users.models import User
+
 from .models import Photo
 
 logger = logging.getLogger(__name__)

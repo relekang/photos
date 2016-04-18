@@ -1,10 +1,10 @@
-from django.conf.urls import url, include
+from django.conf import settings
+from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.conf import settings
 
 from . import views
-from .gallery.views import PhotoDetailView, ArchiveView
+from .gallery.views import ArchiveView, PhotoDetailView
 
 urlpatterns = [
     url(r'^$', views.index, name='home'),

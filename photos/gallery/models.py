@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-from PIL import Image
-from PIL.ExifTags import TAGS
 from django.core.cache import cache
 from django.db import models
 from django.utils.functional import cached_property
 from django.utils.safestring import mark_safe
 from django.utils.text import slugify
+from PIL import Image
+from PIL.ExifTags import TAGS
 from thumbnails import get_thumbnail
 
 

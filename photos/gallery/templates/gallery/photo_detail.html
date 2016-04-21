@@ -9,6 +9,12 @@
 {% endblock %}
 
 {% block content %}
+  {% if archive_url %}
+    <div class="nav">
+        <a href="{{ archive_url }}">Archive</a>
+    </div>
+  {% endif %}
+
   <div class="image" style="background-image: url({{ object.large_thumbnail.url }})"></div>
   <div class="meta">
     <div class="info">

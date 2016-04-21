@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import logging
 
+from django.core.urlresolvers import reverse
 from django.http.response import Http404
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic.detail import DetailView
@@ -42,8 +43,10 @@ class PhotoViewMixin(object):
 
         if self.custom_domain():
             context['photographer'] = User.objects.get(domain=self.request.get_host())
+            context['archive_url'] = reverse('gallery:archive')
         elif username:
             context['photographer'] = User.objects.get(username=username)
+            context['archive_url'] = reverse('user_archive', args=[username])
         return context
 
     def get_queryset(self):

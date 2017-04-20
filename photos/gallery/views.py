@@ -2,13 +2,13 @@
 import logging
 
 from django.core.urlresolvers import reverse
-from django.http.response import Http404
+from django.http.response import Http404, JsonResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
+from photos.gallery.serializers import PhotoSerializer
 from photos.users.models import User
-
 from .models import Photo
 
 logger = logging.getLogger(__name__)
@@ -73,3 +73,8 @@ class PhotoDetailView(PhotoViewMixin, DetailView):
 
 class ArchiveView(PhotoViewMixin, ListView):
     pass
+
+
+class ArchiveApiView(PhotoViewMixin, ListView):
+    def get(self, request, *args, **kwargs):
+        return JsonResponse(PhotoSerializer(self.get_queryset(), many=True).data, safe=False)

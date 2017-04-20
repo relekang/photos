@@ -6,7 +6,7 @@ pyyaml
 redis
 pytz
 
-python-social-auth
+python-social-auth==0.2.12
 django-pipeline
 django-extensions
 django-basis
